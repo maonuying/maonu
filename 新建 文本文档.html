@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>六一儿童节快乐🎈</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .title {
+            font-size: 28px;
+            color: #ff6b6b;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .gift-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ffd166;
+            border-radius: 10px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-color: #ff6b6b;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .gift-content {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background: #fff3cd;
+            border-radius: 10px;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .gift-content h3 {
+            color: #856404;
+            margin-bottom: 15px;
+        }
+
+        .gift-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        .gift-link:hover {
+            background: #218838;
+        }
+
+        .error {
+            color: #dc3545;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="gift-icon">🎁</div>
+        <h1 class="title">儿童节神秘礼物</h1>
+        <p class="subtitle">输入口令领取你的专属惊喜✨</p>
+        
+        <div class="input-group">
+            <input type="text" id="password" placeholder="请输入口令...">
+        </div>
+        
+        <button onclick="checkPassword()">领取礼物</button>
+        
+        <p class="error" id="error">口令错误哦，再想想吧😜</p>
+        
+        <div class="gift-content" id="giftContent">
+            <h3>🎉 恭喜你领取成功！</h3>
+            <p>愿你永远保持童心，天天开心！</p>
+            <a href="https://www.bilibili.com/video/BV1a2cEzoEdy/?share_source=copy_web&vd_source=1fd4626a0c5461424c8983f9b33c4d4c" class="gift-link" target="_blank">点击查看礼物</a>
+        </div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const input = document.getElementById("password").value.trim();
+            const correctPassword = "我要礼物"; // 这里修改成你想要的口令
+            const giftContent = document.getElementById("giftContent");
+            const error = document.getElementById("error");
+
+            if (input === correctPassword) {
+                giftContent.style.display = "block";
+                error.style.display = "none";
+            } else {
+                error.style.display = "block";
+                giftContent.style.display = "none";
+            }
+        }
+
+        // 支持回车键提交
+        document.getElementById("password").addEventListener("keypress", function(e) {
+            if (e.key === "Enter") {
+                checkPassword();
+            }
+        });
+    </script>
+</body>
+</html>
